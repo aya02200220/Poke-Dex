@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import Switch from "@mui/material/Switch";
+import { useTheme } from "./themeContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,6 +54,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
+  const { darkMode, toggleDarkMode } = useTheme();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -62,6 +66,8 @@ export default function NavBar() {
         }}
       >
         <Toolbar>
+          <Switch checked={darkMode} onChange={toggleDarkMode} />
+
           {/* <IconButton
             size="large"
             edge="start"
@@ -80,7 +86,7 @@ export default function NavBar() {
           >
             Poke-Dex
           </Typography>
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -88,7 +94,7 @@ export default function NavBar() {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search>
+          </Search> */}
         </Toolbar>
       </AppBar>
     </Box>

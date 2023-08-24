@@ -43,7 +43,15 @@ const Main = () => {
   return (
     <>
       <NavBar />
-      <Box className="container" sx={{ display: "flex" }}>
+
+      <Box
+        sx={{
+          width: "90%",
+          margin: "auto",
+          pt: "100px",
+          display: "flex",
+        }}
+      >
         <Box sx={{ width: "65%", display: "flex", flexWrap: "wrap", gap: 3 }}>
           <Card
             pokemon={pokeData}
@@ -51,12 +59,11 @@ const Main = () => {
             infoPokemon={(poke) => setPokeDex(poke)}
           />
 
-          <div className="btn-group">
+          <Box className="btn-group">
             {prevUrl && (
               <button
                 onClick={() => {
-                  // prevUrlに値が入っていれば&&以降を見せる、なければ&&以降見えなくする
-                  setPokeData([]); // 「次へ」を押す度にまず空のarrを渡す ▶︎ それまでの20itemはリセットされる ▶︎ 次の20itemだけ入る
+                  setPokeData([]);
                   setUrl(prevUrl);
                 }}
               >
@@ -73,7 +80,7 @@ const Main = () => {
                 Next
               </button>
             )}
-          </div>
+          </Box>
         </Box>
         <Box
           className="right-content"
@@ -88,6 +95,9 @@ const Main = () => {
             sx={{
               border: "solid 1px #cac6ba",
               maxWidth: "80%",
+              minWidth: "80%",
+              minHeight: "695px",
+
               borderRadius: "10px",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             }}

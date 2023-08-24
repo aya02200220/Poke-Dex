@@ -4,7 +4,7 @@
   font-family: "Roboto", sans-serif;
 }
 body {
-  background-color: #fceec8;
+  /* background-color: #fceec8; */
 }
 .container {
   width: 90%;
@@ -21,15 +21,7 @@ body {
   top: 43px;
   right: 10px;
 }
-/* .right-content img {
-  margin: 2rem;
-  height: 180px;
-} */
-/* .right-content h1 {
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
-} */
+
 .abilities {
   width: 30%;
   margin: auto;

@@ -1,8 +1,29 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import {
+  ThemeProvider as MuiThemeProvider,
+  createTheme,
+} from "@mui/material/styles";
+
+import { useTheme } from "./themeContext";
 
 const Pokeinfo = ({ data }) => {
-  console.log(data);
+  // console.log(data);
+  const { darkMode } = useTheme();
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light",
+      background: {
+        default: darkMode ? "#333" : "#f5f5f5",
+      },
+      border: {
+        default: darkMode ? "solid 5px #747474" : "solid 5px #333",
+      },
+      text: {
+        primary: darkMode ? "#fff" : "#333",
+      },
+    },
+  });
 
   return (
     <>
@@ -17,11 +38,22 @@ const Pokeinfo = ({ data }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            minWidth: "300px",
+            // minWidth: "300px",
           }}
         >
-          <Box component={"h1"} sx={{ textTransform: "uppercase" }}>
-            {data.name}
+          <Box
+            // component={"h1"}
+            sx={{
+              width: "100%",
+              textTransform: "uppercase",
+              color: theme.palette.text.primary,
+            }}
+          >
+            <Typography
+              sx={{ fontSize: "30px", width: "100%", fontWeight: "900" }}
+            >
+              {data.name}
+            </Typography>
           </Box>
           <Box
             sx={{ width: "70%", maxWidth: "100%", height: "auto" }}
@@ -34,9 +66,12 @@ const Pokeinfo = ({ data }) => {
             {data.abilities.map((item) => {
               return (
                 <>
-                  <div className="group">
+                  <Box
+                    className="group"
+                    sx={{ color: theme.palette.text.primary }}
+                  >
                     <h2>{item.ability.name}</h2>
-                  </div>
+                  </Box>
                 </>
               );
             })}
@@ -45,9 +80,9 @@ const Pokeinfo = ({ data }) => {
             {data.stats.map((item) => {
               return (
                 <>
-                  <h3>
+                  <Box sx={{ color: theme.palette.text.primary }}>
                     {item.stat.name}:{item.base_stat}
-                  </h3>
+                  </Box>
                 </>
               );
             })}

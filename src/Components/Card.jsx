@@ -1,9 +1,30 @@
 import { IconButton, Typography, Box } from "@mui/material";
+import { alpha } from "@mui/material";
 import zIndex from "@mui/material/styles/zIndex";
 import React from "react";
+import {
+  ThemeProvider as MuiThemeProvider,
+  createTheme,
+} from "@mui/material/styles";
+
+import { useTheme } from "./themeContext";
 
 const Card = ({ pokemon, loading, infoPokemon }) => {
-  console.log(pokemon);
+  const { darkMode } = useTheme();
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light",
+      background: {
+        default: darkMode ? "#333" : "#f5f5f5",
+      },
+      border: {
+        default: darkMode ? "solid 5px #747474" : "solid 5px #333",
+      },
+      text: {
+        primary: darkMode ? "#fff" : "#333",
+      },
+    },
+  });
   return (
     <>
       {loading ? (
@@ -16,12 +37,12 @@ const Card = ({ pokemon, loading, infoPokemon }) => {
             >
               <IconButton sx={{ borderRadius: 100 }}>
                 <Box
-                  //   className="card"
                   sx={{
                     height: "150px",
                     width: "150px",
                     backgroundColor: "#a51b13",
-                    border: "solid 5px #333",
+                    border: theme.palette.border.default,
+                    // border: "solid 5px #333",
                     display: "flex",
                     borderRadius: "100px",
                     position: "relative",
@@ -32,6 +53,24 @@ const Card = ({ pokemon, loading, infoPokemon }) => {
                   key={item.id}
                   onClick={() => infoPokemon(item)}
                 >
+                  <Box
+                    sx={{
+                      height: "150px",
+                      width: "150px",
+                      backgroundColor: alpha("#fff", 0.1),
+                      position: "absolute",
+                      borderRadius: "100px",
+                      zIndex: 1,
+                    }}
+                  ></Box>
+                  <Box
+                    sx={{
+                      height: "5px",
+                      width: "150px",
+                      position: "absolute",
+                      // backgroundColor: "#333",
+                    }}
+                  ></Box>
                   <Box
                     sx={{
                       height: "75px",
@@ -51,7 +90,8 @@ const Card = ({ pokemon, loading, infoPokemon }) => {
                       left: "-5%",
                       width: "220px",
                       display: "flex",
-                      color: "#333",
+                      // color: "#333",
+                      color: theme.palette.text.primary,
                     }}
                   >
                     <Typography
