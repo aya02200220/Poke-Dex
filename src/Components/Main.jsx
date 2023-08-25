@@ -48,7 +48,7 @@ const Main = () => {
         sx={{
           width: "90%",
           margin: "auto",
-          pt: "100px",
+          pt: "140px",
           display: "flex",
         }}
       >
@@ -91,19 +91,7 @@ const Main = () => {
             justifyContent: "center",
           }}
         >
-          <Box
-            sx={{
-              border: "solid 1px #cac6ba",
-              maxWidth: "80%",
-              minWidth: "80%",
-              minHeight: "695px",
-
-              borderRadius: "10px",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <Pokeinfo data={pokeDex} />
-          </Box>
+          <Pokeinfo data={pokeDex} />
         </Box>
       </Box>
     </>

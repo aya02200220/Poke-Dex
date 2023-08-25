@@ -13,7 +13,7 @@ body {
   display: flex;
 }
 .right-content {
-  padding-top: 100px;
+  padding-top: 80px;
   width: 40%;
   text-align: center;
   color: black;
@@ -22,24 +22,6 @@ body {
   right: 10px;
 }
 
-.abilities {
-  width: 30%;
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 1rem;
-}
-.abilities .group {
-  background-color: #b74555;
-  color: white;
-  padding: 0.5rem;
-  font-size: 12px;
-  border-radius: 8px;
-}
-.base-stat {
-  margin-top: 2rem;
-}
 .btn-group {
   display: flex;
 }
